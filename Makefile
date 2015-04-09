@@ -1,8 +1,13 @@
-beaksh: linenoise.h linenoise.c
+BIN=./bin
+
+beaksh: linenoise.h linenoise.c build
 
 beaksh: linenoise.c beaksh.c
-	$(CC) -Wall -W -Os -g -o beaksh linenoise.c beaksh.c
+	$(CC) -Wall -W -Os -g -o $(BIN)/beaksh linenoise.c beaksh.c
+
+build:
+	@mkdir -p $(BIN)
 
 clean:
-	rm -f beaksh
-	rm -rf beaksh.dSYM
+	rm -f $(BIN)/beaksh
+	rm -rf `find $(BIN) -name "*.dSYM" -print`
